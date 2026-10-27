@@ -42,7 +42,9 @@ def curry(function: Callable[..., Result]) -> Callable[..., Any]:
                 parameters.bind(*combined_args, **combined_kwargs)
             except TypeError:
                 if not args and not kwargs:
-                    raise TypeError("На этом шаге требуется аргумент") from None
+                    raise TypeError(
+                        "На этом шаге требуется аргумент"
+                    ) from None
                 return build(combined_args, combined_kwargs)
             return function(*combined_args, **combined_kwargs)
 
